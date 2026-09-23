@@ -68,7 +68,6 @@
   .btn:hover{opacity:0.85;}
   .btn:active{transform:scale(0.97);}
 
-  /* ---------- CATEGORIES ---------- */
   .category-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:22px;}
   .cat-pill{
     padding:8px 16px;border-radius:999px;border:1px solid var(--line);
@@ -125,7 +124,6 @@
 
   .empty{color:var(--muted);text-align:center;padding:60px 20px;border:1px dashed var(--line);border-radius:12px;font-size:13.5px;grid-column:1/-1;}
 
-  /* ---------- PANIER ---------- */
   .cart-overlay{
     position:fixed;inset:0;background:rgba(0,0,0,0.7);
     display:none;z-index:110;
@@ -201,14 +199,6 @@
 </head>
 <body>
 
-<!--
-  ============================================================
-  CATALOGUE — automatiquement chargé depuis le Google Sheet
-  défini dans CONFIG.sheetId ci-dessous. Colonnes possibles :
-  Nom, Prix, Image, Description, Tailles (S,M,L,XL),
-  Categorie (T-shirt / Pantalon / Accessoire)
-  ============================================================
--->
 <script>
 const CONFIG = {
   shopName: "AFROVYBZ",
@@ -218,15 +208,13 @@ const CONFIG = {
   whatsappNumber: "22870828163",
   taillesDefaut: ["S", "M", "L", "XL"],
   categorieDefaut: "T-shirt",
-  categories: ["T-shirt", "Pantalon", "Accessoire"],
+  categories: ["T-shirt", "Pantalon", "Accessoire", "Chaussures"],
 
   sheetId: "1QD1Dm_lJqjNCDHXeBRYZktOpd4SRj1TN1PB8zY9oe9E",
   sheetTab: "catalogue-nova",
 };
 
-// DÉBUT PRODUITS (utilisé seulement si le Google Sheet est vide/indisponible)
 let PRODUITS = [];
-// FIN PRODUITS
 </script>
 
 <header>
@@ -292,8 +280,8 @@ let PRODUITS = [];
     <p class="sub">La méthode la plus simple : un tableau en ligne que tu modifies comme un Excel.</p>
 
     <p class="hint" style="margin-top:0;">
-      <b>1.</b> Dans ton Google Sheet, garde les colonnes <code>Nom</code>, <code>Prix</code>, <code>Image</code>, <code>Description</code>, <code>Tailles</code> (ex: <code>S,M,L,XL</code>) et <code>Categorie</code> (<code>T-shirt</code>, <code>Pantalon</code> ou <code>Accessoire</code>).<br><br>
-      <b>2.</b> Une ligne = un article. Pour ajouter un pantalon ou un accessoire : ajoute une ligne avec la bonne catégorie, il apparaîtra automatiquement dans le bon onglet du site.<br><br>
+      <b>1.</b> Dans ton Google Sheet, garde les colonnes <code>Nom</code>, <code>Prix</code>, <code>Image</code>, <code>Description</code>, <code>Tailles</code> (ex: <code>S,M,L,XL</code>) et <code>Categorie</code> (<code>T-shirt</code>, <code>Pantalon</code>, <code>Accessoire</code> ou <code>Chaussures</code>).<br><br>
+      <b>2.</b> Une ligne = un article. Pour ajouter un pantalon, un accessoire ou une paire de chaussures : ajoute une ligne avec la bonne catégorie, il apparaîtra automatiquement dans le bon onglet du site.<br><br>
       <b>3.</b> Le site relit le tableau à chaque ouverture — pas besoin de toucher au code.
     </p>
 
@@ -308,6 +296,7 @@ let PRODUITS = [];
         <option value="T-shirt">T-shirt</option>
         <option value="Pantalon">Pantalon</option>
         <option value="Accessoire">Accessoire</option>
+        <option value="Chaussures">Chaussures</option>
       </select>
     </div>
 
@@ -324,11 +313,11 @@ function whatsappIcon(){
   return `<svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.24-1.11a7.9 7.9 0 003.8.97h0a7.94 7.94 0 007.94-7.94 7.9 7.9 0 00-2.38-5.6zm-5.55 12.2h0a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 01-1-3.5 6.6 6.6 0 016.6-6.6c1.76 0 3.42.69 4.66 1.94a6.55 6.55 0 011.93 4.67 6.6 6.6 0 01-6.6 6.58zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.44.1-.13.2-.5.64-.62.77-.11.13-.23.15-.42.05-.2-.1-.83-.3-1.58-.97-.58-.52-.98-1.16-1.1-1.35-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.25-.02-.35-.05-.1-.44-1.05-.6-1.44-.16-.38-.32-.33-.44-.33h-.38c-.13 0-.34.05-.52.25-.18.2-.68.66-.68 1.6 0 .95.7 1.87.8 2 .1.13 1.37 2.1 3.33 2.94.46.2.83.32 1.11.4.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>`;
 }
 
-let selections = [];       // taille choisie par produit (index correspond à PRODUITS_AFFICHES)
-let quantites = [];        // quantité choisie par produit
-let PRODUITS_AFFICHES = []; // sous-ensemble de PRODUITS après filtre catégorie
+let selections = [];
+let quantites = [];
+let PRODUITS_AFFICHES = [];
 let categorieActive = "Tous";
-let panier = [];           // articles ajoutés au panier
+let panier = [];
 
 function categoriesDisponibles(){
   const set = new Set(PRODUITS.map(p => p.categorie || CONFIG.categorieDefaut));
@@ -341,13 +330,13 @@ function renderCategoryRow(){
   if(cats.length <= 1){ row.innerHTML = ''; return; }
   const all = ["Tous", ...cats];
   row.innerHTML = all.map(c =>
-    `<button type="button" class="cat-pill ${c===categorieActive?'active':''}" onclick="setCategorie('${c}')">${c}${c!=='Tous' && c!=='Accessoire'?'s':''}</button>`
+    `<button type="button" class="cat-pill ${c===categorieActive?'active':''}" onclick="setCategorie('${c}')">${c}${c!=='Tous' && c!=='Accessoire' && c!=='Chaussures'?'s':''}</button>`
   ).join('');
 }
 
 function setCategorie(c){
   categorieActive = c;
-  document.getElementById('sectionTitle').textContent = c === 'Tous' ? 'Nos produits' : c + 's';
+  document.getElementById('sectionTitle').textContent = c === 'Tous' ? 'Nos produits' : (c === 'Chaussures' ? c : c + 's');
   renderCategoryRow();
   applyFilterAndRender();
 }
@@ -486,7 +475,6 @@ function commanderPanier(){
   window.open(url, '_blank');
 }
 
-// ---------- Contenu dynamique ----------
 document.getElementById('taglineText').textContent = CONFIG.tagline;
 document.getElementById('logoTop').textContent = CONFIG.shopName;
 document.getElementById('logoBottom').textContent = CONFIG.shopName;
@@ -500,7 +488,6 @@ updateCartUI();
 renderCategoryRow();
 applyFilterAndRender();
 
-// ---------- Chargement du catalogue depuis Google Sheet ----------
 async function loadFromSheet(){
   if(!CONFIG.sheetId) return;
   try{
@@ -530,7 +517,6 @@ async function loadFromSheet(){
 }
 loadFromSheet();
 
-// ---------- Espace boutique (accès caché : ajouter ?admin=1 à l'URL) ----------
 if(new URLSearchParams(window.location.search).get('admin') === '1'){
   document.getElementById('openAdmin').style.display = 'inline-block';
 }
