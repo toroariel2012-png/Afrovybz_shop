@@ -16,17 +16,15 @@
     --line:rgba(255,255,255,0.12);
     color-scheme:dark;
   }
-  :root[data-theme="light"]{
-    --bg:#ffffff;
-    --surface:#f4f4f4;
-    --surface-2:#ececec;
-    --text:#0a0a0a;
-    --muted:#6b6b6b;
-    --line:rgba(0,0,0,0.12);
-    color-scheme:light;
+  html{background:var(--bg);}
+  body{
+    background-color:var(--bg);
+    background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDUwMCI+CjxnIGZpbGw9IiM0YTRhNGEiIGZpbGwtb3BhY2l0eT0iMSI+CjwhLS0gTm9ydGggQW1lcmljYSAtLT4KPGVsbGlwc2UgY3g9IjE1MCIgY3k9IjkwIiByeD0iOTAiIHJ5PSI1NSIvPgo8ZWxsaXBzZSBjeD0iMTIwIiBjeT0iMTYwIiByeD0iNzAiIHJ5PSI2MCIvPgo8ZWxsaXBzZSBjeD0iMTgwIiBjeT0iMTk1IiByeD0iNTAiIHJ5PSI0MiIvPgo8ZWxsaXBzZSBjeD0iMTcwIiBjeT0iMjM1IiByeD0iMjUiIHJ5PSIzMCIvPgo8ZWxsaXBzZSBjeD0iMjgwIiBjeT0iNTAiIHJ4PSIzNSIgcnk9IjI1Ii8+CjwhLS0gU291dGggQW1lcmljYSAtLT4KPGVsbGlwc2UgY3g9IjIzMCIgY3k9IjI4MCIgcng9IjQ1IiByeT0iNzAiLz4KPGVsbGlwc2UgY3g9IjIyMCIgY3k9IjM3MCIgcng9IjMwIiByeT0iNTAiLz4KPGVsbGlwc2UgY3g9IjIxNSIgY3k9IjQyMCIgcng9IjE1IiByeT0iMjUiLz4KPCEtLSBFdXJvcGUgLS0+CjxlbGxpcHNlIGN4PSI0ODAiIGN5PSI5MCIgcng9IjU1IiByeT0iMzUiLz4KPGVsbGlwc2UgY3g9IjUyMCIgY3k9IjcwIiByeD0iMjUiIHJ5PSIyMCIvPgo8IS0tIEFmcmljYSAtLT4KPGVsbGlwc2UgY3g9IjQ4MCIgY3k9IjIwMCIgcng9IjU1IiByeT0iNTAiLz4KPGVsbGlwc2UgY3g9IjQ3MCIgY3k9IjI4MCIgcng9IjQ1IiByeT0iNjAiLz4KPGVsbGlwc2UgY3g9IjQ2MCIgY3k9IjM1MCIgcng9IjMwIiByeT0iNDUiLz4KPGVsbGlwc2UgY3g9IjQ1NSIgY3k9IjM5MCIgcng9IjE1IiByeT0iMjAiLz4KPCEtLSBNaWRkbGUgRWFzdCAtLT4KPGVsbGlwc2UgY3g9IjU2MCIgY3k9IjE0MCIgcng9IjQwIiByeT0iMzAiLz4KPCEtLSBBc2lhIC0tPgo8ZWxsaXBzZSBjeD0iNjUwIiBjeT0iMTEwIiByeD0iMTEwIiByeT0iNzAiLz4KPGVsbGlwc2UgY3g9Ijc1MCIgY3k9IjE0MCIgcng9IjkwIiByeT0iNjAiLz4KPGVsbGlwc2UgY3g9IjgyMCIgY3k9IjE3MCIgcng9IjYwIiByeT0iNDUiLz4KPGVsbGlwc2UgY3g9IjYxMCIgY3k9IjIyMCIgcng9IjM1IiByeT0iNDUiLz4KPGVsbGlwc2UgY3g9IjcyMCIgY3k9IjIzMCIgcng9IjQwIiByeT0iMzAiLz4KPGVsbGlwc2UgY3g9IjgzMCIgY3k9IjEzMCIgcng9IjEyIiByeT0iMjUiLz4KPCEtLSBBdXN0cmFsaWEgLS0+CjxlbGxpcHNlIGN4PSI4MjAiIGN5PSIzNDAiIHJ4PSI3MCIgcnk9IjQ1Ii8+CjxlbGxpcHNlIGN4PSI4NzAiIGN5PSIzNjAiIHJ4PSIzMCIgcnk9IjI1Ii8+CjwvZz4KPC9zdmc+Cg==");
+    background-repeat:no-repeat;
+    background-position:center 100px;
+    background-size:min(1400px,160%) auto;
+    background-attachment:fixed;
   }
-  html{transition:none;}
-  body{transition:background-color .25s ease, color .25s ease;}
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
@@ -216,12 +214,6 @@
   }
   .hint{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.6;}
   .hint b{color:var(--text);}
-
-  .theme-toggle{margin-right:2px;}
-  .theme-toggle .sun-icon{display:none;}
-  .theme-toggle .moon-icon{display:block;}
-  :root[data-theme="light"] .theme-toggle .sun-icon{display:block;}
-  :root[data-theme="light"] .theme-toggle .moon-icon{display:none;}
 </style>
 </head>
 <body>
@@ -253,16 +245,10 @@ let PRODUITS = [];
 <header>
   <div class="wrap">
     <div class="logo" id="logoTop"></div>
-    <div style="display:flex;align-items:center;gap:6px;">
-      <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Changer de thème">
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-      </button>
-      <button class="icon-btn" id="cartBtn" aria-label="Panier">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
-      </button>
-    </div>
+    <button class="icon-btn" id="cartBtn" aria-label="Panier">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+    </button>
   </div>
 </header>
 
@@ -541,24 +527,6 @@ document.getElementById('cartClose').addEventListener('click', fermerPanier);
 document.getElementById('cartOverlay').addEventListener('click', e=>{ if(e.target.id === 'cartOverlay') fermerPanier(); });
 document.getElementById('cartOrderBtn').addEventListener('click', commanderPanier);
 updateCartUI();
-
-function applyTheme(theme){
-  document.documentElement.setAttribute('data-theme', theme === 'light' ? 'light' : 'dark');
-}
-
-function toggleTheme(){
-  const current = document.documentElement.getAttribute('data-theme') || 'dark';
-  const next = current === 'dark' ? 'light' : 'dark';
-  applyTheme(next);
-  try{ localStorage.setItem('afrovybz-theme', next); }catch(e){}
-}
-
-(function initTheme(){
-  let saved = null;
-  try{ saved = localStorage.getItem('afrovybz-theme'); }catch(e){}
-  applyTheme(saved || 'dark');
-})();
-document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 
 renderCategoryRow();
 applyFilterAndRender();
