@@ -14,6 +14,16 @@
     --text:#ffffff;
     --muted:#8f8f8f;
     --line:rgba(255,255,255,0.12);
+    color-scheme:dark;
+  }
+  html{background:var(--bg);}
+  body{
+    background-color:var(--bg);
+    background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAwIDUwMCI+CjxnIGZpbGw9IiM0YTRhNGEiIGZpbGwtb3BhY2l0eT0iMSI+CjwhLS0gTm9ydGggQW1lcmljYSAtLT4KPGVsbGlwc2UgY3g9IjE1MCIgY3k9IjkwIiByeD0iOTAiIHJ5PSI1NSIvPgo8ZWxsaXBzZSBjeD0iMTIwIiBjeT0iMTYwIiByeD0iNzAiIHJ5PSI2MCIvPgo8ZWxsaXBzZSBjeD0iMTgwIiBjeT0iMTk1IiByeD0iNTAiIHJ5PSI0MiIvPgo8ZWxsaXBzZSBjeD0iMTcwIiBjeT0iMjM1IiByeD0iMjUiIHJ5PSIzMCIvPgo8ZWxsaXBzZSBjeD0iMjgwIiBjeT0iNTAiIHJ4PSIzNSIgcnk9IjI1Ii8+CjwhLS0gU291dGggQW1lcmljYSAtLT4KPGVsbGlwc2UgY3g9IjIzMCIgY3k9IjI4MCIgcng9IjQ1IiByeT0iNzAiLz4KPGVsbGlwc2UgY3g9IjIyMCIgY3k9IjM3MCIgcng9IjMwIiByeT0iNTAiLz4KPGVsbGlwc2UgY3g9IjIxNSIgY3k9IjQyMCIgcng9IjE1IiByeT0iMjUiLz4KPCEtLSBFdXJvcGUgLS0+CjxlbGxpcHNlIGN4PSI0ODAiIGN5PSI5MCIgcng9IjU1IiByeT0iMzUiLz4KPGVsbGlwc2UgY3g9IjUyMCIgY3k9IjcwIiByeD0iMjUiIHJ5PSIyMCIvPgo8IS0tIEFmcmljYSAtLT4KPGVsbGlwc2UgY3g9IjQ4MCIgY3k9IjIwMCIgcng9IjU1IiByeT0iNTAiLz4KPGVsbGlwc2UgY3g9IjQ3MCIgY3k9IjI4MCIgcng9IjQ1IiByeT0iNjAiLz4KPGVsbGlwc2UgY3g9IjQ2MCIgY3k9IjM1MCIgcng9IjMwIiByeT0iNDUiLz4KPGVsbGlwc2UgY3g9IjQ1NSIgY3k9IjM5MCIgcng9IjE1IiByeT0iMjAiLz4KPCEtLSBNaWRkbGUgRWFzdCAtLT4KPGVsbGlwc2UgY3g9IjU2MCIgY3k9IjE0MCIgcng9IjQwIiByeT0iMzAiLz4KPCEtLSBBc2lhIC0tPgo8ZWxsaXBzZSBjeD0iNjUwIiBjeT0iMTEwIiByeD0iMTEwIiByeT0iNzAiLz4KPGVsbGlwc2UgY3g9Ijc1MCIgY3k9IjE0MCIgcng9IjkwIiByeT0iNjAiLz4KPGVsbGlwc2UgY3g9IjgyMCIgY3k9IjE3MCIgcng9IjYwIiByeT0iNDUiLz4KPGVsbGlwc2UgY3g9IjYxMCIgY3k9IjIyMCIgcng9IjM1IiByeT0iNDUiLz4KPGVsbGlwc2UgY3g9IjcyMCIgY3k9IjIzMCIgcng9IjQwIiByeT0iMzAiLz4KPGVsbGlwc2UgY3g9IjgzMCIgY3k9IjEzMCIgcng9IjEyIiByeT0iMjUiLz4KPCEtLSBBdXN0cmFsaWEgLS0+CjxlbGxpcHNlIGN4PSI4MjAiIGN5PSIzNDAiIHJ4PSI3MCIgcnk9IjQ1Ii8+CjxlbGxpcHNlIGN4PSI4NzAiIGN5PSIzNjAiIHJ4PSIzMCIgcnk9IjI1Ii8+CjwvZz4KPC9zdmc+Cg==");
+    background-repeat:no-repeat;
+    background-position:center 100px;
+    background-size:min(1400px,160%) auto;
+    background-attachment:fixed;
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -63,19 +73,18 @@
     display:inline-flex;align-items:center;gap:8px;
     padding:13px 24px;border-radius:999px;
     font-weight:600;font-size:14px;border:1px solid var(--text);
-    background:var(--text);color:#000;transition:opacity .15s, transform .15s;
+    background:var(--text);color:var(--bg);transition:opacity .15s, transform .15s;
   }
   .btn:hover{opacity:0.85;}
   .btn:active{transform:scale(0.97);}
 
-  
   .category-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:22px;}
   .cat-pill{
     padding:8px 16px;border-radius:999px;border:1px solid var(--line);
     background:transparent;font-size:12.5px;font-weight:600;color:var(--muted);
     transition:all .15s;
   }
-  .cat-pill.active{background:var(--text);color:#000;border-color:var(--text);}
+  .cat-pill.active{background:var(--text);color:var(--bg);border-color:var(--text);}
 
   .section-label{display:flex;align-items:baseline;gap:10px;margin:0 0 22px;padding:0 0 14px;border-bottom:1px solid var(--line);}
   .section-label h2{font-family:'Space Mono',monospace;font-weight:700;font-size:15px;letter-spacing:0.14em;text-transform:uppercase;}
@@ -85,12 +94,21 @@
   .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px 14px;}
   @media(min-width:720px){ .grid{grid-template-columns:repeat(4,1fr);gap:22px;} }
 
-  .card{display:flex;flex-direction:column;}
+  .card{display:flex;flex-direction:column;transition:transform .25s ease;}
+  .card:hover{transform:translateY(-6px);}
   .card-img{
     aspect-ratio:1/1.15;background:var(--surface);border-radius:10px;
     overflow:hidden;position:relative;margin-bottom:12px;
   }
-  .card-img img{width:100%;height:100%;object-fit:cover;}
+  .card-img img{
+    position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    transition:opacity .35s ease, transform .6s ease;
+  }
+  .card-img .img-primary{opacity:1;}
+  .card-img .img-secondary{opacity:0;}
+  .card-img.has-second:hover .img-primary{opacity:0;}
+  .card-img.has-second:hover .img-secondary{opacity:1;}
+  .card-img:hover img{transform:scale(1.045);}
   .card-name{font-size:13.5px;font-weight:500;margin-bottom:4px;}
   .card-price{font-family:'Space Mono',monospace;font-size:13.5px;color:var(--text);margin-bottom:10px;}
 
@@ -125,7 +143,6 @@
 
   .empty{color:var(--muted);text-align:center;padding:60px 20px;border:1px dashed var(--line);border-radius:12px;font-size:13.5px;grid-column:1/-1;}
 
-  
   .cart-overlay{
     position:fixed;inset:0;background:rgba(0,0,0,0.7);
     display:none;z-index:110;
@@ -201,7 +218,6 @@
 </head>
 <body>
 
-
 <script>
 const CONFIG = {
   shopName: "AFROVYBZ",
@@ -210,19 +226,21 @@ const CONFIG = {
 
   whatsappNumber: "22870828163",
   taillesDefaut: ["S", "M", "L", "XL"],
+  taillesParCategorie: {
+    "T-shirt": ["S", "M", "L", "XL"],
+    "Pantalon": ["S", "M", "L", "XL"],
+    "Chaussures": ["38", "39", "40", "41", "42", "43", "44", "45"],
+    "Accessoire": ["Taille unique"]
+  },
   categorieDefaut: "T-shirt",
-  categories: ["T-shirt", "Pantalon", "Accessoire"],
+  categories: ["T-shirt", "Pantalon", "Accessoire", "Chaussures"],
 
   sheetId: "1QD1Dm_lJqjNCDHXeBRYZktOpd4SRj1TN1PB8zY9oe9E",
   sheetTab: "catalogue-nova",
 };
 
-
 let PRODUITS = [];
-
 </script>
-
-<div class="top-banner" id="bannerText"></div>
 
 <header>
   <div class="wrap">
@@ -255,6 +273,16 @@ let PRODUITS = [];
   <div class="wrap">
     <div class="logo" id="logoBottom"></div>
     <p>Choisis ta taille et ta quantité, clique sur commander : ça part direct dans WhatsApp, prêt à envoyer.</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;">
+      <a href="https://www.instagram.com/afrovybz_house/" target="_blank" rel="noopener" class="admin-link" style="display:inline-flex;align-items:center;gap:6px;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        @afrovybz_house
+      </a>
+      <a href="https://www.tiktok.com/@afrovybz956" target="_blank" rel="noopener" class="admin-link" style="display:inline-flex;align-items:center;gap:6px;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor"><path d="M16.6 5.82c-1.02-.9-1.6-2.2-1.6-3.6h-3.2v13.8c0 1.55-1.26 2.8-2.8 2.8a2.8 2.8 0 01-2.8-2.8 2.8 2.8 0 012.8-2.8c.3 0 .6.05.87.13V10.2a6.1 6.1 0 00-.87-.06A6 6 0 003 16.14 6 6 0 009 22.13a6 6 0 006-6V9.4a8.9 8.9 0 005.2 1.67V7.86a5.5 5.5 0 01-3.6-2.04z"/></svg>
+        @afrovybz956
+      </a>
+    </div>
     <a href="#" class="admin-link" id="openAdmin" style="display:none;">Espace boutique — gérer les produits</a>
   </div>
 </footer>
@@ -283,8 +311,9 @@ let PRODUITS = [];
     <p class="sub">La méthode la plus simple : un tableau en ligne que tu modifies comme un Excel.</p>
 
     <p class="hint" style="margin-top:0;">
-      <b>1.</b> Dans ton Google Sheet, garde les colonnes <code>Nom</code>, <code>Prix</code>, <code>Image</code>, <code>Description</code>, <code>Tailles</code> (ex: <code>S,M,L,XL</code>) et <code>Categorie</code> (<code>T-shirt</code>, <code>Pantalon</code> ou <code>Accessoire</code>).<br><br>
-      <b>2.</b> Une ligne = un article. Pour ajouter un pantalon ou un accessoire : ajoute une ligne avec la bonne catégorie, il apparaîtra automatiquement dans le bon onglet du site.<br><br>
+      <b>1.</b> Dans ton Google Sheet, garde les colonnes <code>Nom</code>, <code>Prix</code>, <code>Image</code>, <code>Description</code>, <code>Tailles</code> et <code>Categorie</code> (<code>T-shirt</code>, <code>Pantalon</code>, <code>Accessoire</code> ou <code>Chaussures</code>). Tu peux aussi ajouter une colonne <code>Image2</code> (optionnelle) : cette deuxième photo s'affichera automatiquement quand quelqu'un survole le produit.<br><br>
+      <b>Tailles :</b> si tu laisses la colonne <code>Tailles</code> vide, le site choisit automatiquement les bonnes tailles selon la catégorie : <code>S,M,L,XL</code> pour un T-shirt/Pantalon, <code>38 à 45</code> pour des Chaussures, et <code>Taille unique</code> pour un Accessoire. Tu peux toujours remplir <code>Tailles</code> toi-même (ex: <code>40,41,42,43</code>) pour écraser ce choix automatique.<br><br>
+      <b>2.</b> Une ligne = un article. Pour ajouter un pantalon, un accessoire ou une paire de chaussures : ajoute une ligne avec la bonne catégorie, il apparaîtra automatiquement dans le bon onglet du site.<br><br>
       <b>3.</b> Le site relit le tableau à chaque ouverture — pas besoin de toucher au code.
     </p>
 
@@ -292,13 +321,15 @@ let PRODUITS = [];
     <div class="field"><label>Nom du produit</label><input type="text" id="f_nom" placeholder="Ex : Éclipse Grise"></div>
     <div class="field"><label>Prix (FCFA)</label><input type="number" id="f_prix" placeholder="Ex : 12000"></div>
     <div class="field"><label>Lien de l'image (URL)</label><input type="text" id="f_image" placeholder="https://..."></div>
+    <div class="field"><label>Lien de l'image 2 (optionnel — s'affiche au survol)</label><input type="text" id="f_image2" placeholder="https://..."></div>
     <div class="field"><label>Courte description</label><textarea id="f_desc" placeholder="Ex : Coton bio, coupe regular."></textarea></div>
-    <div class="field"><label>Tailles (séparées par une virgule)</label><input type="text" id="f_tailles" placeholder="S,M,L,XL"></div>
+    <div class="field"><label>Tailles (séparées par une virgule — laisse vide pour auto selon la catégorie)</label><input type="text" id="f_tailles" placeholder="Ex : S,M,L,XL ou 40,41,42"></div>
     <div class="field"><label>Catégorie</label>
       <select id="f_categorie">
         <option value="T-shirt">T-shirt</option>
         <option value="Pantalon">Pantalon</option>
         <option value="Accessoire">Accessoire</option>
+        <option value="Chaussures">Chaussures</option>
       </select>
     </div>
 
@@ -315,15 +346,21 @@ function whatsappIcon(){
   return `<svg viewBox="0 0 24 24"><path d="M17.6 6.32A7.85 7.85 0 0012.05 4a7.94 7.94 0 00-6.9 11.9L4 20l4.24-1.11a7.9 7.9 0 003.8.97h0a7.94 7.94 0 007.94-7.94 7.9 7.9 0 00-2.38-5.6zm-5.55 12.2h0a6.6 6.6 0 01-3.36-.92l-.24-.14-2.5.66.67-2.44-.16-.25a6.6 6.6 0 01-1-3.5 6.6 6.6 0 016.6-6.6c1.76 0 3.42.69 4.66 1.94a6.55 6.55 0 011.93 4.67 6.6 6.6 0 01-6.6 6.58zm3.6-4.94c-.2-.1-1.17-.58-1.35-.64-.18-.07-.31-.1-.44.1-.13.2-.5.64-.62.77-.11.13-.23.15-.42.05-.2-.1-.83-.3-1.58-.97-.58-.52-.98-1.16-1.1-1.35-.11-.2-.01-.3.09-.4.09-.09.2-.23.3-.35.1-.11.13-.2.2-.32.06-.13.03-.25-.02-.35-.05-.1-.44-1.05-.6-1.44-.16-.38-.32-.33-.44-.33h-.38c-.13 0-.34.05-.52.25-.18.2-.68.66-.68 1.6 0 .95.7 1.87.8 2 .1.13 1.37 2.1 3.33 2.94.46.2.83.32 1.11.4.47.15.9.13 1.24.08.38-.06 1.17-.48 1.33-.94.17-.46.17-.86.12-.94-.05-.09-.18-.14-.38-.24z"/></svg>`;
 }
 
-let selections = [];       
-let quantites = [];        
-let PRODUITS_AFFICHES = []; 
+let selections = [];
+let quantites = [];
+let PRODUITS_AFFICHES = [];
 let categorieActive = "Tous";
-let panier = [];           
+let panier = [];
 
 function categoriesDisponibles(){
   const set = new Set(PRODUITS.map(p => p.categorie || CONFIG.categorieDefaut));
   return CONFIG.categories.filter(c => set.has(c));
+}
+
+function taillesPourProduit(p){
+  if(p.tailles && p.tailles.length) return p.tailles;
+  const cat = p.categorie || CONFIG.categorieDefaut;
+  return CONFIG.taillesParCategorie[cat] || CONFIG.taillesDefaut;
 }
 
 function renderCategoryRow(){
@@ -332,13 +369,13 @@ function renderCategoryRow(){
   if(cats.length <= 1){ row.innerHTML = ''; return; }
   const all = ["Tous", ...cats];
   row.innerHTML = all.map(c =>
-    `<button type="button" class="cat-pill ${c===categorieActive?'active':''}" onclick="setCategorie('${c}')">${c}${c!=='Tous' && c!=='Accessoire'?'s':''}</button>`
+    `<button type="button" class="cat-pill ${c===categorieActive?'active':''}" onclick="setCategorie('${c}')">${c}${c!=='Tous' && c!=='Accessoire' && c!=='Chaussures'?'s':''}</button>`
   ).join('');
 }
 
 function setCategorie(c){
   categorieActive = c;
-  document.getElementById('sectionTitle').textContent = c === 'Tous' ? 'Nos produits' : c + 's';
+  document.getElementById('sectionTitle').textContent = c === 'Tous' ? 'Nos produits' : (c === 'Chaussures' ? c : c + 's');
   renderCategoryRow();
   applyFilterAndRender();
 }
@@ -360,23 +397,27 @@ function renderGrid(){
     return;
   }
 
-  selections = PRODUITS_AFFICHES.map(p => (p.tailles && p.tailles[0]) || '');
+  selections = PRODUITS_AFFICHES.map(p => taillesPourProduit(p)[0] || '');
   quantites = PRODUITS_AFFICHES.map(() => 1);
 
   grid.innerHTML = PRODUITS_AFFICHES.map((p, i) => {
-    const tailles = (p.tailles && p.tailles.length) ? p.tailles : CONFIG.taillesDefaut;
+    const tailles = taillesPourProduit(p);
     return `
     <div class="card" data-i="${i}">
-      <div class="card-img"><img src="${p.image}" alt="${p.nom}" loading="lazy"></div>
+      <div class="card-img${p.image2 ? ' has-second' : ''}">
+        <img class="img-primary" src="${p.image}" alt="${p.nom}" loading="lazy">
+        ${p.image2 ? `<img class="img-secondary" src="${p.image2}" alt="${p.nom}" loading="lazy">` : ''}
+      </div>
       <div class="card-name">${p.nom}</div>
       <div class="card-price">${formatPrix(p.prix)}</div>
 
+      ${tailles.length > 1 ? `
       <div class="option-group">
         <span class="option-label">Taille</span>
         <div class="chip-row">
           ${tailles.map((t,ti) => `<button type="button" class="chip ${ti===0?'active':''}" onclick="selectTaille(${i},'${t}',this)">${t}</button>`).join('')}
         </div>
-      </div>
+      </div>` : ''}
 
       <div class="option-group">
         <span class="option-label">Quantité</span>
@@ -467,19 +508,16 @@ function fermerPanier(){ document.getElementById('cartOverlay').classList.remove
 
 function commanderPanier(){
   if(panier.length === 0) return;
-  let texte = `Bonjour ${CONFIG.shopName} 👋, je souhaite commander :\n`;
+  let texte = `Bonjour ${CONFIG.shopName} 👋,\nJe souhaite passer la commande suivante :\n`;
   panier.forEach(it => {
-    texte += `\n• ${it.quantite} x "${it.nom}"`;
+    texte += `\n• ${it.quantite} « ${it.nom} »`;
     if(it.taille) texte += ` — taille ${it.taille}`;
   });
-  const total = panier.reduce((sum, it) => sum + it.prix * it.quantite, 0);
-  texte += `\n\nTotal : ${formatPrix(total)}. Est-ce disponible ?`;
+  texte += `\nMerci.`;
   const url = `https://wa.me/${CONFIG.whatsappNumber}?text=${encodeURIComponent(texte)}`;
   window.open(url, '_blank');
 }
 
-
-document.getElementById('bannerText').textContent = CONFIG.bannerText;
 document.getElementById('taglineText').textContent = CONFIG.tagline;
 document.getElementById('logoTop').textContent = CONFIG.shopName;
 document.getElementById('logoBottom').textContent = CONFIG.shopName;
@@ -507,6 +545,7 @@ async function loadFromSheet(){
         nom: r.Nom || r.nom || '',
         prix: parseInt((r.Prix || r.prix || '0').toString().replace(/[^\d]/g,''), 10) || 0,
         image: r.Image || r.image || '',
+        image2: r.Image2 || r.image2 || r['Image 2'] || r['image 2'] || '',
         description: r.Description || r.description || '',
         tailles: splitList(r.Tailles || r.tailles),
         categorie: (r.Categorie || r.categorie || CONFIG.categorieDefaut).trim()
@@ -534,8 +573,10 @@ document.getElementById('genCode').addEventListener('click', ()=>{
   const nom = document.getElementById('f_nom').value.trim() || 'Nom du produit';
   const prix = document.getElementById('f_prix').value.trim() || '0';
   const image = document.getElementById('f_image').value.trim() || 'https://';
+  const image2 = document.getElementById('f_image2').value.trim();
   const desc = document.getElementById('f_desc').value.trim() || '';
-  const tailles = document.getElementById('f_tailles').value.trim() || 'S,M,L,XL';
+  const tailles = document.getElementById('f_tailles').value.trim();
+  const taillesArr = tailles ? tailles.split(',').map(t=>`"${t.trim()}"`).join(', ') : '';
   const categorie = document.getElementById('f_categorie').value;
   const out = document.getElementById('codeOut');
   out.style.display = 'block';
@@ -543,9 +584,9 @@ document.getElementById('genCode').addEventListener('click', ()=>{
 `  {
     nom: "${nom}",
     prix: ${prix},
-    image: "${image}",
+    image: "${image}",${image2 ? `\n    image2: "${image2}",` : ''}
     description: "${desc}",
-    tailles: [${tailles.split(',').map(t=>`"${t.trim()}"`).join(', ')}],
+    tailles: [${taillesArr}],
     categorie: "${categorie}"
   },`;
 });
