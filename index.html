@@ -16,17 +16,18 @@
     --line:rgba(255,255,255,0.12);
     color-scheme:dark;
   }
-  :root[data-theme="light"]{
-    --bg:#ffffff;
-    --surface:#f4f4f4;
-    --surface-2:#ececec;
-    --text:#0a0a0a;
-    --muted:#6b6b6b;
-    --line:rgba(0,0,0,0.12);
-    color-scheme:light;
+  html{background:var(--bg);}
+  body{
+    background-color:var(--bg);
+    background-image:url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAwIiBoZWlnaHQ9IjUwMCIgdmlld0JveD0iMCAwIDEwMDAgNTAwIj4KPGcgZmlsbD0iIzRhNGE0YSI+CjxlbGxpcHNlIGN4PSIxNTAiIGN5PSI5MCIgcng9IjkwIiByeT0iNTUiLz4KPGVsbGlwc2UgY3g9IjEyMCIgY3k9IjE2MCIgcng9IjcwIiByeT0iNjAiLz4KPGVsbGlwc2UgY3g9IjE4MCIgY3k9IjE5NSIgcng9IjUwIiByeT0iNDIiLz4KPGVsbGlwc2UgY3g9IjE3MCIgY3k9IjIzNSIgcng9IjI1IiByeT0iMzAiLz4KPGVsbGlwc2UgY3g9IjI4MCIgY3k9IjUwIiByeD0iMzUiIHJ5PSIyNSIvPgo8ZWxsaXBzZSBjeD0iMjMwIiBjeT0iMjgwIiByeD0iNDUiIHJ5PSI3MCIvPgo8ZWxsaXBzZSBjeD0iMjIwIiBjeT0iMzcwIiByeD0iMzAiIHJ5PSI1MCIvPgo8ZWxsaXBzZSBjeD0iMjE1IiBjeT0iNDIwIiByeD0iMTUiIHJ5PSIyNSIvPgo8ZWxsaXBzZSBjeD0iNDgwIiBjeT0iOTAiIHJ4PSI1NSIgcnk9IjM1Ii8+CjxlbGxpcHNlIGN4PSI1MjAiIGN5PSI3MCIgcng9IjI1IiByeT0iMjAiLz4KPGVsbGlwc2UgY3g9IjQ4MCIgY3k9IjIwMCIgcng9IjU1IiByeT0iNTAiLz4KPGVsbGlwc2UgY3g9IjQ3MCIgY3k9IjI4MCIgcng9IjQ1IiByeT0iNjAiLz4KPGVsbGlwc2UgY3g9IjQ2MCIgY3k9IjM1MCIgcng9IjMwIiByeT0iNDUiLz4KPGVsbGlwc2UgY3g9IjQ1NSIgY3k9IjM5MCIgcng9IjE1IiByeT0iMjAiLz4KPGVsbGlwc2UgY3g9IjU2MCIgY3k9IjE0MCIgcng9IjQwIiByeT0iMzAiLz4KPGVsbGlwc2UgY3g9IjY1MCIgY3k9IjExMCIgcng9IjExMCIgcnk9IjcwIi8+CjxlbGxpcHNlIGN4PSI3NTAiIGN5PSIxNDAiIHJ4PSI5MCIgcnk9IjYwIi8+CjxlbGxpcHNlIGN4PSI4MjAiIGN5PSIxNzAiIHJ4PSI2MCIgcnk9IjQ1Ii8+CjxlbGxpcHNlIGN4PSI2MTAiIGN5PSIyMjAiIHJ4PSIzNSIgcnk9IjQ1Ii8+CjxlbGxpcHNlIGN4PSI3MjAiIGN5PSIyMzAiIHJ4PSI0MCIgcnk9IjMwIi8+CjxlbGxpcHNlIGN4PSI4MzAiIGN5PSIxMzAiIHJ4PSIxMiIgcnk9IjI1Ii8+CjxlbGxpcHNlIGN4PSI4MjAiIGN5PSIzNDAiIHJ4PSI3MCIgcnk9IjQ1Ii8+CjxlbGxpcHNlIGN4PSI4NzAiIGN5PSIzNjAiIHJ4PSIzMCIgcnk9IjI1Ii8+CjwvZz4KPC9zdmc+Cg==");
+    background-repeat:no-repeat;
+    background-position:center top;
+    background-size:cover;
+    background-attachment:fixed;
   }
-  html{transition:none;}
-  body{transition:background-color .25s ease, color .25s ease;}
+  @media(max-width:720px){
+    body{background-attachment:scroll;}
+  }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
@@ -216,12 +217,6 @@
   }
   .hint{font-size:11.5px;color:var(--muted);margin-top:8px;line-height:1.6;}
   .hint b{color:var(--text);}
-
-  .theme-toggle{margin-right:2px;}
-  .theme-toggle .sun-icon{display:none;}
-  .theme-toggle .moon-icon{display:block;}
-  :root[data-theme="light"] .theme-toggle .sun-icon{display:block;}
-  :root[data-theme="light"] .theme-toggle .moon-icon{display:none;}
 </style>
 </head>
 <body>
@@ -253,16 +248,10 @@ let PRODUITS = [];
 <header>
   <div class="wrap">
     <div class="logo" id="logoTop"></div>
-    <div style="display:flex;align-items:center;gap:6px;">
-      <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Changer de thème">
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
-      </button>
-      <button class="icon-btn" id="cartBtn" aria-label="Panier">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
-      </button>
-    </div>
+    <button class="icon-btn" id="cartBtn" aria-label="Panier">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+      <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+    </button>
   </div>
 </header>
 
@@ -541,24 +530,6 @@ document.getElementById('cartClose').addEventListener('click', fermerPanier);
 document.getElementById('cartOverlay').addEventListener('click', e=>{ if(e.target.id === 'cartOverlay') fermerPanier(); });
 document.getElementById('cartOrderBtn').addEventListener('click', commanderPanier);
 updateCartUI();
-
-function applyTheme(theme){
-  document.documentElement.setAttribute('data-theme', theme === 'light' ? 'light' : 'dark');
-}
-
-function toggleTheme(){
-  const current = document.documentElement.getAttribute('data-theme') || 'dark';
-  const next = current === 'dark' ? 'light' : 'dark';
-  applyTheme(next);
-  try{ localStorage.setItem('afrovybz-theme', next); }catch(e){}
-}
-
-(function initTheme(){
-  let saved = null;
-  try{ saved = localStorage.getItem('afrovybz-theme'); }catch(e){}
-  applyTheme(saved || 'dark');
-})();
-document.getElementById('themeToggle').addEventListener('click', toggleTheme);
 
 renderCategoryRow();
 applyFilterAndRender();
